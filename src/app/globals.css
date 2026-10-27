@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: #4a0d18;
+}
+
+body {
+  @apply bg-ivory font-serif text-wine antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #e3a99b;
+  color: #4a0d18;
+}
+
+:focus-visible {
+  outline: 2px solid #e3a99b;
+  outline-offset: 3px;
+}
+
+/* Subtle lace texture, drawn as a repeating SVG motif */
+.lace {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none' stroke='%23B5606A' stroke-opacity='0.16' stroke-width='0.7'><circle cx='32' cy='32' r='10'/><circle cx='32' cy='32' r='3'/><path d='M32 6c4 6 4 14 0 20M32 58c-4-6-4-14 0-20M6 32c6-4 14-4 20 0M58 32c-6 4-14 4-20 0'/><circle cx='0' cy='0' r='6'/><circle cx='64' cy='0' r='6'/><circle cx='0' cy='64' r='6'/><circle cx='64' cy='64' r='6'/></svg>");
+  background-size: 64px 64px;
+}
+
+.rose-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b5606a, transparent);
+}
+
+.btn-rose {
+  @apply inline-flex items-center justify-center gap-2 border border-rose bg-rose px-8 py-3.5 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-wine transition duration-300 hover:bg-ivory;
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 border border-rose px-8 py-3.5 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition duration-300 hover:bg-rose hover:text-wine;
+}
+.btn-wine {
+  @apply inline-flex items-center justify-center gap-2 border border-wine bg-wine px-8 py-3.5 text-[0.8rem] font-semibold uppercase tracking-[0.22em] text-ivory transition duration-300 hover:bg-transparent hover:text-wine;
+}
+
+/* Rose-gold foil lettering with a slow travelling shine */
+.foil {
+  color: #f0d2ca;
+  background-image: linear-gradient(
+    110deg,
+    #d99686 0%,
+    #f6d6c8 18%,
+    #c27a6b 34%,
+    #fbe6dc 50%,
+    #e3a99b 64%,
+    #fff3ec 78%,
+    #d99686 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* room for script swashes so the gradient covers them */
+  padding: 0.06em 0.18em;
+  margin: -0.06em -0.18em;
+  animation: foil-shine 10s ease-in-out infinite;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.25));
+}
+@keyframes foil-shine {
+  0%,
+  100% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foil {
+    animation: none;
+  }
+}
+
+/* Gentle breeze on the corner flowers */
+.flower-sway {
+  transform-origin: 10% 10%;
+  animation: flower-sway 7s ease-in-out infinite;
+}
+@keyframes flower-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flower-sway {
+    animation: none;
+  }
+}
+
+.eyebrow {
+  @apply text-[0.75rem] font-semibold uppercase tracking-[0.34em];
+}
